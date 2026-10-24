@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanoat Sanitariyasi | 40 Talik Test</title>
+    <!-- Tailwind CSS (CDN orqali) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome (Ikonkalar) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Konfiguratsiyasi (Industrial mavzu uchun) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        industrial: {
+                            black: '#111827',
+                            dark: '#1f2937',
+                            gray: '#374151',
+                            yellow: '#facc15',
+                            yellowHover: '#eab308'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+
+        .hazard-stripes {
+            background: repeating-linear-gradient(
+                45deg,
+                #facc15,
+                #facc15 20px,
+                #111827 20px,
+                #111827 40px
+            );
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Test variantlari tugmalari */
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: #facc15;
+            background-color: #374151;
+            transform: translateX(5px);
+        }
+        
+        .correct {
+            background-color: #059669 !important; /* green-600 */
+            color: white !important;
+            border-color: #047857 !important;
+        }
+
+        .wrong {
+            background-color: #dc2626 !important; /* red-600 */
+            color: white !important;
+            border-color: #b91c1c !important;
+        }
+
+        /* Progress bar animasiyasi */
+        #progress-fill {
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="bg-industrial-black text-white shadow-xl fixed w-full z-50 border-b-4 border-industrial-yellow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-helmet-safety text-industrial-yellow text-2xl"></i>
+                    <span class="font-black text-xl uppercase tracking-wider hidden sm:block">Mehnat Muhofazasi</span>
+                    <span class="font-black text-xl uppercase tracking-wider sm:hidden">MM</span>
+                </div>
+                <div>
+                    <a href="#test-section" class="bg-industrial-yellow text-industrial-black px-6 py-2 rounded font-bold hover:bg-industrial-yellowHover transition duration-300">
+                        Testni Boshlash <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 pb-12 bg-industrial-dark text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 hazard-stripes"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase text-industrial-yellow drop-shadow-md">
+                Sanoat Sanitariyasi va Mehnat Muhofazasi
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 font-light">
+                Ishlab chiqarish korxonalarida xavfsizlik qoidalari, shaxsiy himoya vositalari va sanitariya normalari bo'yicha bilimlaringizni sinab ko'ring.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <div class="bg-industrial-gray p-4 rounded-lg text-center w-32 border border-gray-600 shadow-lg">
+                    <i class="fa-solid fa-list-check text-2xl text-industrial-yellow mb-2"></i>
+                    <div class="font-bold text-xl">40 ta</div>
+                    <div class="text-sm text-gray-400">Savol</div>
+                </div>
+                <div class="bg-industrial-gray p-4 rounded-lg text-center w-32 border border-gray-600 shadow-lg">
+                    <i class="fa-solid fa-clock text-2xl text-industrial-yellow mb-2"></i>
+                    <div class="font-bold text-xl">~15 daq</div>
+                    <div class="text-sm text-gray-400">Vaqt</div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-2 hazard-stripes"></div>
+    </header>
+
+    <!-- Asosiy Qism: Test -->
+    <main id="test-section" class="flex-grow py-12 px-4 sm:px-6 lg:px-8 bg-gray-100 flex items-center justify-center">
+        
+        <!-- Test Konteyneri -->
+        <div class="w-full max-w-4xl bg-industrial-dark rounded-xl shadow-2xl overflow-hidden border border-gray-700">
+            
+            <!-- Boshlash Ekrani -->
+            <div id="start-screen" class="p-8 md:p-16 text-center">
+                <i class="fa-solid fa-shield-halved text-6xl text-industrial-yellow mb-6"></i>
+                <h2 class="text-3xl font-black text-white uppercase mb-4">Onlayn Attestatsiya Testi</h2>
+                <p class="text-gray-400 mb-8 max-w-lg mx-auto">
+                    Diqqat! Ushbu test 40 ta savoldan iborat. Barcha savollar mehnat muhofazasi, yong'in xavfsizligi, shaxsiy himoya vositalari va sanoat sanitariyasiga oid. O'z bilimingizni hoziroq sinab ko'ring.
+                </p>
+                <button onclick="startQuiz()" class="bg-industrial-yellow text-industrial-black text-xl px-10 py-4 rounded-lg font-black uppercase hover:bg-yellow-400 hover:shadow-lg transition transform hover:-translate-y-1">
+                    Boshladik
+                </button>
+            </div>
+
+            <!-- Savol Ekrani -->
+            <div id="quiz-screen" class="hidden flex flex-col h-full">
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-700 h-3">
+                    <div id="progress-fill" class="bg-industrial-yellow h-3 w-0"></div>
+                </div>
+
+                <div class="p-6 md:p-10 flex-grow">
+                    <!-- Savol Info -->
+                    <div class="flex justify-between items-center mb-6 text-gray-400 font-bold uppercase tracking-wider text-sm">
+                        <span>Savol: <span id="q-number" class="text-white text-lg">1</span> / 40</span>
+                        <span>Ball: <span id="score-display" class="text-industrial-yellow text-lg">0</span></span>
+                    </div>
+
+                    <!-- Savol Matni -->
+                    <h3 id="question-text" class="text-2xl md:text-3xl font-bold text-white mb-8 leading-tight">
+                        Savol bu yerda yuklanadi...
+                    </h3>
+
+                    <!-- Variantlar -->
+                    <div id="options-container" class="grid grid-cols-1 gap-4">
+                        <!-- JS tomonidan to'ldiriladi -->
+                    </div>
+
+                    <!-- Keyingi Savol Tugmasi -->
+                    <div class="mt-8 text-right hidden" id="next-btn-container">
+                        <button onclick="nextQuestion()" class="bg-industrial-yellow text-industrial-black px-8 py-3 rounded font-bold uppercase hover:bg-yellow-400 transition shadow-md">
+                            Keyingisi <i class="fa-solid fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Natija Ekrani -->
+            <div id="result-screen" class="hidden p-8 md:p-16 text-center relative">
+                <div class="absolute top-0 left-0 w-full h-4 hazard-stripes"></div>
+                <div id="result-icon" class="text-7xl mb-6 mt-4"></div>
+                <h2 id="result-title" class="text-4xl font-black uppercase mb-2"></h2>
+                <div class="text-xl text-gray-400 mb-6">Sizning umumiy natijangiz:</div>
+                
+                <div class="flex justify-center items-end space-x-2 mb-8">
+                    <span id="final-score" class="text-6xl font-black text-industrial-yellow">0</span>
+                    <span class="text-2xl text-gray-500 font-bold mb-1">/ 40 to'g'ri</span>
+                </div>
+
+                <!-- Foiz ko'rsatkichi -->
+                <div class="w-full bg-gray-700 h-6 rounded-full overflow-hidden mb-6 relative border border-gray-600">
+                    <div id="result-progress" class="h-full transition-all duration-1000 ease-out flex items-center justify-center text-xs font-bold text-black" style="width: 0%;"></div>
+                </div>
+
+                <p id="result-message" class="text-lg text-gray-300 mb-10 max-w-xl mx-auto"></p>
+                
+                <button onclick="restartQuiz()" class="bg-industrial-gray text-white border-2 border-gray-500 px-8 py-3 rounded font-bold hover:bg-gray-600 transition uppercase tracking-wider">
+                    <i class="fa-solid fa-rotate-right mr-2"></i> Qaytadan topshirish
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-industrial-black text-gray-500 py-6 text-center border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 font-medium text-sm">
+            <p>&copy; 2026 Sanoat Sanitariyasi va Mehnat Muhofazasi.</p>
+            <p class="mt-1">Ta'lim maqsadida ishlab chiqildi. Github Pages orqali joylashtirishga tayyor.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logikasi -->
+    <script>
+        // 40 ta savoldan iborat bazani yaratamiz
+        const quizData = [
+            { q: "Mehnat muhofazasi nima?", options: ["Faqat ishchilarni jazolash tizimi", "Xavfsizlik, gigiyena va sog'liqni saqlashni ta'minlovchi tadbirlar tizimi", "Korxona foydasini oshirish rejasi", "Kasaba uyushmasining yig'ilishi"], ans: 1 },
+            { q: "Sanoat sanitariyasining asosiy maqsadi nima?", options: ["Ishlab chiqarish quvvatini oshirish", "Ishchilarni kasb kasalliklaridan himoya qilish va sog'lom muhit yaratish", "Asbob-uskunalarni ta'mirlash", "Ish vaqtini uzaytirish"], ans: 1 },
+            { q: "Shaxsiy himoya vositalariga (SHV) qaysilar kiradi?", options: ["Kaska, respirator, maxsus poyabzal", "Telefon, ruchka, bloknot", "Avtomobil, velosiped", "Sovutkich, isitgich"], ans: 0 },
+            { q: "Ish joyida havoni tozalash uchun qanday tizim ishlatiladi?", options: ["Kanalizatsiya", "Shamollatish (Ventilyasiya) tizimi", "Yoritish tizimi", "Isitish tizimi"], ans: 1 },
+            { q: "Shovqin darajasi qaysi o'lchov birligida o'lchanadi?", options: ["Lyuks (lx)", "Gerts (Hz)", "Desibel (dB)", "Vatt (W)"], ans: 2 },
+            { q: "Tebranishning (vibratsiyaning) inson organizmiga ta'siri natijasida qanday kasallik kelib chiqadi?", options: ["Vibratsiya kasalligi", "Qandli diabet", "Gripp", "Tish og'rig'i"], ans: 0 },
+            { q: "Sun'iy yoritish nima yordamida amalga oshiriladi?", options: ["Quyosh nurlari", "Elektr lampalar va yoritgichlar", "Ochiq olov", "Derazalar"], ans: 1 },
+            { q: "Tabiiy yoritish qayerdan olinadi?", options: ["Elektr stansiyasidan", "Quyosh nurlaridan (deraza, yorug'lik tuynuklari orqali)", "Proyektorlardan", "Lazer nurlaridan"], ans: 1 },
+            { q: "Yoritilganlik darajasi qaysi asbob yordamida o'lchanadi?", options: ["Termometr", "Barometr", "Lyuksmetr", "Voltmetr"], ans: 2 },
+            { q: "Yong'in sodir bo'lganda qaysi raqamga qo'ng'iroq qilish kerak?", options: ["101", "102", "103", "104"], ans: 0 },
+            
+            { q: "Olovni o'chirish uchun eng birinchi qo'llaniladigan vosita qaysi?", options: ["Paxta", "O't o'chirgich (Ognitushitel), qum, suv", "Spirt", "Kislorod baloni"], ans: 1 },
+            { q: "Favqulodda vaziyatlarda odamlarni xavfsiz joyga olib chiqish nima deb ataladi?", options: ["Ekskursiya", "Evakuatsiya", "Sayohat", "Migratsiya"], ans: 1 },
+            { q: "Elektr toki urishidan himoyalanish uchun asbob-uskunalar nima qilinadi?", options: ["Suvga bo'ktiriladi", "Yerga ulanadi (Zazemlenie qilinadi)", "Moylanadi", "Bo'yab qo'yiladi"], ans: 1 },
+            { q: "Balandlikda ishlashda qaysi himoya vositasidan foydalanish majburiy?", options: ["Quyosh ko'zoynagi", "Montaj (saqlovchi) kamari", "Qo'lqop", "Soyabon"], ans: 1 },
+            { q: "Zaharli gazlar va changlar tarqalganda nafas olish a'zolarini qanday himoya qilinadi?", options: ["Respirator yoki protivogaz taqiladi", "Sharf bilan o'raladi", "Qo'l bilan yopiladi", "Deraza yopiladi"], ans: 0 },
+            { q: "Birinchi tibbiy yordam ko'rsatishda xodim nimalarni bilishi kerak?", options: ["Dori ishlab chiqarishni", "Qon to'xtatish, sun'iy nafas berish va bog'lam qo'yishni", "Jarrohlik operatsiyasini qilishni", "Tish davolashni"], ans: 1 },
+            { q: "Dastlabki (kirish) yo'l-yo'riq (instruktaj) kimlarga o'tkaziladi?", options: ["Faqat rahbarlarga", "Ishga yangi qabul qilingan barcha xodimlarga", "Faqat qorovullarga", "Dam oluvchilarga"], ans: 1 },
+            { q: "Ish joyidagi chang miqdorini kamaytirish usullaridan biri:", options: ["Quruq supurish", "Havo so'rg'ich (vityajka) orqali so'rib olish va namli tozalash", "Eshiklarni yopib qo'yish", "Changni havoga puflash"], ans: 1 },
+            { q: "Sanoatda eng ko'p tarqalgan jarohatlanish sababi nima?", options: ["Xavfsizlik qoidalariga rioya qilmaslik", "Ko'p ovqat yeyish", "Sport bilan shug'ullanish", "Ob-havo o'zgarishi"], ans: 0 },
+            { q: "Payvandlash (svarka) ishlarida ishchining ko'zini ultrabinafsha nurlardan nima asraydi?", options: ["Oddiy ko'zoynak", "Tibbiy niqob", "Qora shishali payvandlovchi niqobi (shchitok)", "Kaska"], ans: 2 },
+            
+            { q: "Qurilish maydonchasiga kirishda qaysi xavfsizlik vositasini taqish qat'iy talab qilinadi?", options: ["Kaska", "Quloqchin", "Galstuk", "Kamar"], ans: 0 },
+            { q: "Mexanik harakatlanuvchi qismlarga (masalan, stanok tishli g'ildiraklariga) nima o'rnatilishi shart?", options: ["Chiroq", "Himoya to'sig'i (kojux)", "Oyna", "Musiqa karnayi"], ans: 1 },
+            { q: "Sexda ruxsat etilgan me'yordan ortiq shovqin bo'lsa, ishchi nima taqishi kerak?", options: ["Shlyapa", "Himoya quloqchini (naushnik) yoki quloq tiqini (berushi)", "Bo'yinbog'", "Zirak"], ans: 1 },
+            { q: "Xodimlarni tibbiy ko'rikdan o'tkazishning maqsadi nima?", options: ["Yangi dori sinash", "Kasbga layoqatliligini aniqlash va kasalliklarning oldini olish", "Vaqtni o'tkazish", "Ish haqini kamaytirish"], ans: 1 },
+            { q: "Mehnat qonunchiligiga ko'ra o'smirlar (18 yoshga to'lmaganlar) tungi smenada ishlashi mumkinmi?", options: ["Ha, albatta", "Faqat qishda", "Yo'q, qat'iyan man etiladi", "Ha, agar o'zi rozi bo'lsa"], ans: 2 },
+            { q: "Xavfli yuklarni ko'tarish va tashishda nimalardan foydalaniladi?", options: ["Maxsus yuk ko'tarish kranlari va mexanizmlardan", "Oddiy arqonlardan", "Bolalar aravachasidan", "Skoterdan"], ans: 0 },
+            { q: "Elektr xavfsizligi belgilari qanday shakl va rangda bo'ladi?", options: ["Yashil aylana", "Sariq uchburchak ichida qora chaqmoq belgisi", "Ko'k kvadrat", "Oq yulduz"], ans: 1 },
+            { q: "Kimyoviy kislota teriga to'kilsa, birinchi navbatda nima qilish kerak?", options: ["Zudlik bilan ko'p miqdordagi toza oqova suvda yuvish", "Quritgich bilan quritish", "Krem surtish", "Qattiq ishqalash"], ans: 0 },
+            { q: "Yong'in o'chirgichdagi qizil rang nimani bildiradi?", options: ["Go'zallik uchun", "Diqqatni jalb qilish va xavf signali sifatida tez topish uchun", "Issiqlikni saqlash uchun", "Buzilganligini"], ans: 1 },
+            { q: "Ishlab chiqarish sanitariyasi qaysi fan bilan chambarchas bog'liq?", options: ["Astronomiya", "Tibbiyot va Gigiyena", "Adabiyot", "Tarix"], ans: 1 },
+            
+            { q: "Ish vaqti rejimi va dam olish vaqtlarining to'g'ri tashkil etilishi nimaga yordam beradi?", options: ["Tez charchashga", "Charchoqni oldini olish va ish unumdorligini oshirishga", "Tezroq qarishga", "Ishga kechikishga"], ans: 1 },
+            { q: "Bino ichidagi havoni mo'tadil haroratda ushlab turuvchi tizim nima?", options: ["Konditsionerlash tizimi", "Lift", "Eskalator", "Signalizatsiya"], ans: 0 },
+            { q: "Xodim ish joyida jarohat olsa, eng birinchi navbatda rahbariyat nima qilishi kerak?", options: ["Xodimni ishdan bo'shatishi", "Tez yordam chaqirishi va voqeani tekshirish dalolatnomasini tuzishi", "Hech narsa qilmasligi", "Jarima yozishi"], ans: 1 },
+            { q: "Radiatsiya (nurlanish) xavfi mavjud bo'lgan hududlarga kirish qanday amalga oshiriladi?", options: ["Erkin kirish mumkin", "Maxsus ruxsatnoma va maxsus himoya kiyimi orqali", "Faqat tunda kiriladi", "Yugurib o'tiladi"], ans: 1 },
+            { q: "Kompyuterda uzoq vaqt ishlovchi xodimlarda qaysi a'zo eng ko'p charchaydi va himoyaga muhtoj?", options: ["Ko'z va umurtqa pog'onasi", "Oyoq barmoqlari", "Quloq", "Oshqozon"], ans: 0 },
+            { q: "Yashil fon ustidagi oq krest belgisi nimani anglatadi?", options: ["Tibbiy yordam punkti (Aptechka)", "Yong'in chiqish xavfi", "Yuqori kuchlanish", "Chekish joyi"], ans: 0 },
+            { q: "Zaharlanish xavfi bor bo'lgan moddalar qanday idishlarda saqlanishi shart?", options: ["Ochiq qutida", "Germetik yopiq va yorlig'i (etiketkasi) bor idishlarda", "Oddiy shishalarda", "Qog'oz qoplarda"], ans: 1 },
+            { q: "Ish joyini ozoda saqlash, yig'ishtirish kimning asosiy vazifasi hisoblanadi?", options: ["Faqat farroshning", "Har bir xodim o'z ish joyini tartibli saqlashga majbur", "Direktorning", "Mijozlarning"], ans: 1 },
+            { q: "Sanoat chiqindilari qanday utilizatsiya qilinadi?", options: ["Ko'chaga tashlanadi", "Suv havzalariga oqiziladi", "Maxsus poligonlarga olib boriladi yoki qayta ishlanadi", "Yoqib yuboriladi"], ans: 2 },
+            { q: "Mehnat muhofazasi qoidalari kim tomonidan tasdiqlanadi va nazorat qilinadi?", options: ["Davlat va mehnat inspeksiyasi tomonidan", "Qo'shnilar tomonidan", "O'quvchilar tomonidan", "Xaridorlar tomonidan"], ans: 0 }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let isAnswering = false;
+
+        // Elementlarni tanlab olish
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const qNumberDisplay = document.getElementById('q-number');
+        const scoreDisplay = document.getElementById('score-display');
+        const nextBtnContainer = document.getElementById('next-btn-container');
+        const progressFill = document.getElementById('progress-fill');
+
+        // Testni boshlash
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            resultScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            score = 0;
+            updateScoreDisplay();
+            loadQuestion();
+        }
+
+        // Savolni yuklash
+        function loadQuestion() {
+            isAnswering = false;
+            nextBtnContainer.classList.add('hidden');
+            optionsContainer.innerHTML = '';
+            
+            const currentData = quizData[currentQuestionIndex];
+            
+            // UI ni yangilash
+            qNumberDisplay.innerText = currentQuestionIndex + 1;
+            questionText.innerText = currentData.q;
+            
+            // Progress barni yangilash
+            const progressPercentage = ((currentQuestionIndex) / quizData.length) * 100;
+            progressFill.style.width = `${progressPercentage}%`;
+
+            // Variantlarni chiqarish
+            currentData.options.forEach((optionText, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn bg-gray-800 border-2 border-gray-600 text-gray-200 text-left px-6 py-4 rounded-lg font-medium shadow-sm w-full flex items-center justify-between';
+                btn.innerHTML = `<span>${optionText}</span> <i class="fa-solid fa-circle-dot text-gray-600 status-icon hidden"></i>`;
+                
+                btn.onclick = () => selectAnswer(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+
+            // Animatsiya qo'shish
+            questionText.classList.remove('fade-in');
+            void questionText.offsetWidth; // reflow trigger
+            questionText.classList.add('fade-in');
+            
+            optionsContainer.classList.remove('fade-in');
+            void optionsContainer.offsetWidth;
+            optionsContainer.classList.add('fade-in');
+        }
+
+        // Javobni tanlash
+        function selectAnswer(selectedIndex, selectedBtn) {
+            if (isAnswering) return;
+            isAnswering = true;
+
+            const currentData = quizData[currentQuestionIndex];
+            const correctIndex = currentData.ans;
+            const buttons = optionsContainer.children;
+
+            // Barcha tugmalarni nofaol qilish
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                buttons[i].classList.remove('hover:bg-gray-700', 'hover:border-industrial-yellow', 'hover:translate-x-1');
+                buttons[i].style.opacity = '0.6';
+            }
+
+            // To'g'ri javobni belgilash
+            buttons[correctIndex].style.opacity = '1';
+            buttons[correctIndex].classList.add('correct');
+            const correctIcon = buttons[correctIndex].querySelector('.status-icon');
+            correctIcon.classList.remove('hidden', 'fa-circle-dot');
+            correctIcon.classList.add('fa-check-circle', 'text-white');
+
+            // Agar noto'g'ri javob tanlangan bo'lsa
+            if (selectedIndex === correctIndex) {
+                score++;
+                updateScoreDisplay();
+            } else {
+                selectedBtn.style.opacity = '1';
+                selectedBtn.classList.add('wrong');
+                const wrongIcon = selectedBtn.querySelector('.status-icon');
+                wrongIcon.classList.remove('hidden', 'fa-circle-dot');
+                wrongIcon.classList.add('fa-times-circle', 'text-white');
+            }
+
+            // Keyingi tugmani ko'rsatish
+            nextBtnContainer.classList.remove('hidden');
+            nextBtnContainer.classList.add('fade-in');
+        }
+
+        // Keyingi savolga o'tish
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                showResultScreen();
+            }
+        }
+
+        function updateScoreDisplay() {
+            scoreDisplay.innerText = score;
+        }
+
+        // Natijani ko'rsatish
+        function showResultScreen() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            
+            const total = quizData.length;
+            const percentage = (score / total) * 100;
+            
+            document.getElementById('final-score').innerText = score;
+            
+            const title = document.getElementById('result-title');
+            const message = document.getElementById('result-message');
+            const icon = document.getElementById('result-icon');
+            const progressBar = document.getElementById('result-progress');
+
+            // Progress bar animasiyasi
+            setTimeout(() => {
+                progressBar.style.width = `${percentage}%`;
+                progressBar.innerText = `${percentage.toFixed(0)}%`;
+                
+                if (percentage >= 85) progressBar.classList.add('bg-green-500');
+                else if (percentage >= 60) progressBar.classList.add('bg-yellow-500');
+                else progressBar.classList.add('bg-red-500', 'text-white');
+            }, 100);
+
+            if (percentage >= 85) {
+                icon.innerHTML = '<i class="fa-solid fa-medal text-green-500"></i>';
+                title.innerText = "A'lo Natija!";
+                title.className = "text-4xl font-black uppercase mb-2 text-green-500";
+                message.innerText = "Siz sanoat sanitariyasi va mehnat muhofazasi bo'yicha mukammal bilimga egasiz. Haqiqiy xavfsizlik mutaxassisi!";
+            } else if (percentage >= 60) {
+                icon.innerHTML = '<i class="fa-solid fa-thumbs-up text-industrial-yellow"></i>';
+                title.innerText = "Yaxshi Natija!";
+                title.className = "text-4xl font-black uppercase mb-2 text-industrial-yellow";
+                message.innerText = "Bilimlaringiz yomon emas, lekin ba'zi qoidalarni takrorlab olishingiz zarar qilmaydi. Xavfsizlikda mayda detallar ham muhim!";
+            } else {
+                icon.innerHTML = '<i class="fa-solid fa-triangle-exclamation text-red-500"></i>';
+                title.innerText = "Qoniqarsiz!";
+                title.className = "text-4xl font-black uppercase mb-2 text-red-500";
+                message.innerText = "Diqqat! Sizning xavfsizlik bo'yicha bilimlaringiz yetarli emas. Ishlab chiqarish hududida ishlashdan oldin qoidalarni to'liq o'rganib chiqishingiz shart.";
+            }
+        }
+
+        // Qaytadan boshlash
+        function restartQuiz() {
+            const progressBar = document.getElementById('result-progress');
+            progressBar.style.width = '0%';
+            progressBar.className = 'h-full transition-all duration-1000 ease-out flex items-center justify-center text-xs font-bold text-black';
+            startQuiz();
+        }
+    </script>
+</body>
+</html>
